@@ -10,10 +10,10 @@ import (
 	"os"
 )
 
-func Screenshot() (*image.RGBA) {
+func Screenshot() *image.RGBA {
 	bounds := screenshot.GetDisplayBounds(0)
 	img, err := screenshot.CaptureRect(bounds)
-	if err!= nil {
+	if err != nil {
 		panic(err)
 	}
 	fileName := fmt.Sprintf("%d_%dx%d.png", 0, bounds.Dx(), bounds.Dy())
@@ -24,7 +24,7 @@ func Screenshot() (*image.RGBA) {
 }
 func hello(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "GET" {
-		io.WriteString(w, "<html><head></head><body><img  src=\"0_1920x1080.png\"></body></html>")
+		io.WriteString(w, "<html><head></head><body><img src=\"0_1920x1080.png\"></body></html>")
 		return
 	}
 }
@@ -39,5 +39,3 @@ func main() {
 		fmt.Println("Listen And Server", err.Error())
 	}
 }
-
-
